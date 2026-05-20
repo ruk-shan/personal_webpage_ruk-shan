@@ -20,8 +20,11 @@ navLinks.forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href !== '#' && document.querySelector(href)) {
+        const target = href !== '#' ? document.querySelector(href) : null;
+
+        if (target) {
             e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
